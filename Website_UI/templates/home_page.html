@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PatentPal - Home</title>
-<meta name="description" content="A new and better way to search the web">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="monetization" content="$ilp.uphold.com/AzDfkEqpUKeb">
-<link rel="search" type="application/opensearchdescription+xml" title="Infinity Search" href="https://infinitysearch.co/opensearch.xml">
-<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
-<link rel="stylesheet" href="https://infinitysearch.co/static/css/bulma.min.css">
-<script type="text/javascript" src="{{url_for('static', filename='js/js-cookie.js')}}" ></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/theme_top.js')}}" ></script>
-<link rel="stylesheet" href="https://infinitysearch.co/static/css/home.css">
-<link rel="apple-touch-icon" sizes="180x180" href="https://infinitysearch.co/static/images/is/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://infinitysearch.co/static/images/is/favicon_32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://infinitysearch.co/static/images/is/favicon_16.png">
-<link rel="manifest" href="https://infinitysearch.co/static/images/is/site.webmanifest">
-<link rel="mask-icon" href="https://infinitysearch.co/static/images/is/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+	<meta charset="UTF-8">
+	<title>WeaveIT</title>
+	<meta name="description" content="A new and better way to search the web">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="monetization" content="$ilp.uphold.com/AzDfkEqpUKeb">
+	<link rel="search" type="application/opensearchdescription+xml" title="Infinity Search" href="https://infinitysearch.co/opensearch.xml">
+	<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+	<link rel="stylesheet" href="https://infinitysearch.co/static/css/bulma.min.css">
+	<script type="text/javascript" src="{{url_for('static', filename='js/js-cookie.js')}}" ></script>
+	<script type="text/javascript" src="{{url_for('static', filename='js/theme_top.js')}}" ></script>
+	<link rel="stylesheet" href="https://infinitysearch.co/static/css/home.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://infinitysearch.co/static/images/is/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://infinitysearch.co/static/images/is/favicon_32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://infinitysearch.co/static/images/is/favicon_16.png">
+	<link rel="manifest" href="https://infinitysearch.co/static/images/is/site.webmanifest">
+	<link rel="mask-icon" href="https://infinitysearch.co/static/images/is/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
 </head>
 <body class="Site">
-<div id="page_style" class="Site-content page__style page__description">
-<div id="home_content">
-<div class="content column is-half is-offset-6" style="text-align: right">
-<button class="button"><a href="{{ url_for('retrieval') }}"><span class="icon"><img id="id-theme-image" src="{{url_for('static', filename='images/search-solid.svg')}}" style="width: 16px; height: 16px;"></span><span>Autocomplete</span></a></button>
-<button class="button"><a href="{{ url_for('summarise') }}"><span class="icon"><img id="id-theme-image" src="{{url_for('static', filename='images/pen-solid.svg')}}"  style="width: 16px; height: 16px;"></span><span>Summarize</span></a></button>
-</div>
-<div id="home_padding"></div>
-<div style="text-align: center;">
-<a href="/" id="logo_home">
-<img id="logo_img_home" src="{{url_for('static', filename='images/eave t.gif')}}" height="400px" width="400px" style="min-width: 140px;">
-</a>
-</div>
-<div class="content column is-half is-offset-one-quarter" style="margin-top: 30px; padding-bottom: 0; margin-bottom: 15px;">
-<form action="/retrieval" method = "post" autocomplete="off">
-<div class="field has-addons">
-<div class="control is-expanded">
-<input id="search_query" class="input is-medium" type="search" placeholder="Query Completion" name="search_box" autofocus="autofocus" onfocus="this.select()" required>
-</div>
-<div class="control">
-<button class="button input is-medium search-button-icon"><img src="https://infinitysearch.co/static/images/fa/search.svg" style="height: 22px; width: 22px;">
-</button>
-</div>
-</div>
-</form>
-</div>
-<div class="column is-half is-offset-one-quarter" style="padding-top: 0; margin-top: 0">
-<div id="rabbit_hole" class="rabbit_hole" style="display: none">
-</div>
-</div>
-<footer id="footer" class="footer footer-settings" style="text-align: center; padding-top: 10px; padding-bottom: 10px; background-color: white">
-</footer>
-<script type="text/javascript" src="{{url_for('static', filename='js/theme_bottom.js')}}" defer></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}"></script>
-<style id="custom_css_placeholder_home">
+	<div id="page_style" class="Site-content page__style page__description">
+		<div id="home_content">
+			<div class="content column is-half is-offset-6" style="text-align: right">
+				<button class="button"><a href="{{ url_for('predictions') }}"><span>Autocomplete</span><span class="icon"><img id="id-theme-image" src="{{url_for('static', filename='images/arrow-solid.svg')}}" style="width: 16px; height: 16px;"></span></a></button>
+			</div>
+			<div id="home_padding"></div>
+			<div style="text-align: center;">
+				<a href="/" id="logo_home">
+					<img id="logo_img_home" src="{{url_for('static', filename='images/eave t.gif')}}" height="400px" width="400px" style="min-width: 140px;">
+				</a>
+			</div>
+			<div class="content column is-half is-offset-one-quarter" style="margin-top: 30px; padding-bottom: 0; margin-bottom: 15px;">
+				<form action="/predictions" method = "post" autocomplete="off">
+					<div class="field has-addons">
+						<div class="control is-expanded">
+							<input id="search_query" class="input is-medium" type="search" placeholder="Query Completion" name="search_box" autofocus="autofocus" onfocus="this.select()" required>
+						</div>
+						<div class="control">
+							<button class="button input is-medium search-button-icon"><img src="{{url_for('static', filename='images/arrow-solid.svg')}}" style="height: 22px; width: 22px;">
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="column is-half is-offset-one-quarter" style="padding-top: 0; margin-top: 0">
+				<div id="rabbit_hole" class="rabbit_hole" style="display: none">
+				</div>
+			</div>
+			<footer id="footer" class="footer footer-settings" style="text-align: center; padding-top: 10px; padding-bottom: 10px; background-color: white">
+			</footer>
+			<script type="text/javascript" src="{{url_for('static', filename='js/theme_bottom.js')}}" defer></script>
+			<script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}"></script>
+			<style id="custom_css_placeholder_home">
 
-</style>
-</body>
-</html>
+			</style>
+		</body>
+		</html>
