@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WeaveIT - Autocomplete</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="monetization" content="$ilp.uphold.com/AzDfkEqpUKeb">
+<link rel="search" type="application/opensearchdescription+xml" title="Infinity Search" href="https://infinitysearch.co/opensearch.xml">
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+<link rel="stylesheet" href="https://infinitysearch.co/static/css/normalize.css">
+<style> a.toplink {
+        color: black;
+    } </style>
+<style>
+.collapsible {
+  cursor: pointer;
+}
+
+.active, .collapsible:hover {
+}
+
+.content1 {
+  padding: 16px 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
+<link rel="stylesheet" href="https://infinitysearch.co/static/css/bulma.min.css">
+<script type="text/javascript" src="{{url_for('static', filename='js/js-cookie.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/theme_top.js')}}" ></script>
+<link rel="stylesheet" href="https://infinitysearch.co/static/css/results.css">
+<script src="https://infinitysearch.co/static/js/masonry.min.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/sortable.min.js')}}"></script>
+<link href="https://infinitysearch.co/static/fonts/results_fonts.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="https://infinitysearch.co/static/images/is/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://infinitysearch.co/static/images/is/favicon_32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://infinitysearch.co/static/images/is/favicon_16.png">
+<link rel="manifest" href="https://infinitysearch.co/static/images/is/site.webmanifest">
+<link rel="mask-icon" href="https://infinitysearch.co/static/images/is/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<style>
+            .card {
+                word-break: break-word;
+            }
+        </style>
+</head>
+<body>
+
+<div style="padding-top: 12px;"></div>
+<div class="column" style="padding-bottom: 0;">
+<div class="columns">
+<div class="column is-9">
+<form action="/retrieval" method="post" id="input_form" autocomplete="off">
+<div id="form_div">
+<a href="/">
+<a href="/" style="display: inline-block; float: left;" id="logo_result">
+<span class="icon is-medium">
+<img id="logo_img_result" src="{{url_for('static', filename='images/logo_pp.png')}}" height="49px" width="49px">
+</span>
+</a>
+</a>
+<div id="input_text_area" class="field has-addons">
+<div class="control is-expanded" style="margin-left: 12px;">
+<input class="input is-small" rows="1" name = "search_box" type="search" placeholder="Enter Keywords" value="" onfocus="this.select()" required>
+<!-- {% if show_hidden == True %}{{search_query}}{% endif %}</textarea> -->
+</div>
+<div class="control">
+<button class="button input is-small search-button-icon"><img src="https://infinitysearch.co/static/images/fa/search.svg" style="height: 22px; width: 22px; min-width: .87em;">
+</button>
+<!-- <div class="dropdown-item" style="text-align: left;"> -->
+<!-- <span class="cl-dropdown-text" style="display: inline-block; line-height: 2em;">Words</span>
+<span>
+<button type="button" class="button is-small" id="font-minus" style="font-family: BlinkMacSystemFont, -apple-system, &quot;"><img src="https://infinitysearch.co/static/images/fa/minus.svg" style="width: 12px; height: 12px;"></button>
+<button type="button" class="button is-small" id="font-size" style="font-family: BlinkMacSystemFont, -apple-system, &quot">7</button>
+<button type="button" class="button is-small" id="font-plus" style="font-family: BlinkMacSystemFont, -apple-system, &quot, Helvetica, Arial, sans-serif;"><img src="https://infinitysearch.co/static/images/fa/plus.svg" style="width: 12px; height: 12px;"></button>
+</span> -->
+<input id=demoInput type=number min=1 max=5>
+<button onclick="increment()">+</button>
+<button onclick="decrement()">-</button>
+<script>
+   function increment() {
+      document.getElementById('demoInput').stepUp();
+   }
+   function decrement() {
+      document.getElementById('demoInput').stepDown();
+   }
+</script>
+<!-- </div> -->
+</div>
+</div>
+</div>
+</form>
+</div>
+<div id="dashboard_icons_area" class="column is-3 dashboard-right-desktop" style="text-align: right">
+<div id="dropdown_settings_area"></div>
+<div class="dropdown is-right" id="dropdown-settings">
+<div class="dropdown-trigger">
+<button type="button" class="button is-small" id="dropdown-settings-button" aria-haspopup="true" aria-controls="dropdown-settings-content">
+<img src="https://infinitysearch.co/static/images/fa/cog.svg" style="width: 16px; height: 16px; min-width: .87em;">
+</button>
+<button class="button is-small"><a href="{{ url_for('summarise') }}"><span class="icon"><img id="id-theme-image" src="{{url_for('static', filename='images/pen-solid.svg')}}" style="width: 16px; height: 16px;"></span><span>Summarize</span></a></button>
+</div>
+<div class="dropdown-menu" id="dropdown-settings-content" role="menu">
+<div class="dropdown-content">
+<div class="dropdown-item" style="text-align: left;">
+</div>
+<hr class="dropdown-divider">
+<div class="dropdown-item" style="text-align: left;">
+<span class="cl-dropdown-text" style="display: inline-block; line-height: 2em;">font</span>
+<div class="select is-rounded is-small">
+<select id="font-select" onchange="fontChange()">
+<option value="BlinkMacSystemFont,-apple-system,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',Helvetica,Arial,sans-serif">
+default
+</option>
+<option valulogo_ppe="'Roboto', sans-serif">roboto</option>
+<option value="'Alfa Slab One', cursive">alfa slab one</option>
+<option value="'Courier Prime', monospace">courier prime</option>
+<option value="'Grenze Gotisch', cursive">grenze gotisch</option>
+<option value="'Ubuntu', sans-serif">ubuntu</option>
+</select>
+</div>
+</div>
+<div class="dropdown-item" style="text-align: left;">
+<span class="cl-dropdown-text" style="display: inline-block; line-height: 2em;">size</span>
+<span>
+<button type="button" class="button is-small" id="font-minus"><img src="https://infinitysearch.co/static/images/fa/minus.svg" style="width: 12px; height: 12px;"></button>
+<button type="button" class="button is-small" id="font-size">7</button>
+<button type="button" class="button is-small" id="font-plus"><img src="https://infinitysearch.co/static/images/fa/plus.svg" style="width: 12px; height: 12px;"></button>
+</span>
+</div>
+<hr class="dropdown-divider">
+<div class="dropdown-item" style="text-align: center;">
+<button type="button" class="button is-small is-danger is-outlined" id="setting-reset">
+reset
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="column" style="margin-top: 5px; padding-bottom: 0;">
+<div class="tabs">
+<ul id="id-results-tabs">
+</ul>
+</div>
+</div>
+
+{% if query_var %}
+<div class="columns">
+<div class="column is-9 results_column" style="padding-top: 1.2rem; padding-right: .5rem;">
+  <span style="font-size: 18px">
+  <p><span style="color: red"><i>Did you mean: </i></span><span style="color: purple"><b>{{upd_query}}?</b></span></p>
+  </span>
+</div>
+</div>
+{% endif %}
+<div class="columns">
+<div class="column is-9 results_column" style="padding-top: 1.2rem; padding-right: .5rem;">
+<div class="column" id="loading_bar" style="padding-top: 0;">
+<div class="column" style="padding-top: 0; padding-bottom: 0; margin-bottom: 0;"></div>
+
+
+{% if show_hidden == True %}
+  <div class="card" style="margin-bottom: 0.8rem;">
+      <div class="card-content">
+      <div class="content">
+      <div class = "collapsible">
+        <p style="color: black"><b>Input Query:</b> {{search_query}}</p>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  <br>   
+{%for i in range(0, len)%}
+    <div class="card" style="margin-bottom: 0.8rem;">
+    <div class="card-content">
+    <div class="content">
+    <div class = "collapsible">
+    <p style="color: seagreen"><b>Output {{i}}:</b> {{search_query}} abcd</p>
+    <!-- <div><b>Abstract:</b> {{outputs[i][2]}}</div></div>
+    <div class = "content1"><b>Description:</b> {{outputs[i][3]}}</div>  -->
+    </div>
+    </div>
+    </div>
+    </div>
+    <br>
+{%endfor%}
+{% endif %}
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+<script type="text/javascript" src="{{url_for('static', filename='js/results.js')}}"></script>
+<script src="https://infinitysearch.co/static/js/unit_conversion.js" defer></script>
+<script src="https://infinitysearch.co/static/js/color_picker.js" defer></script>
+<script src="https://infinitysearch.co/static/js/rand_num_generation.js" defer></script>
+<script src="https://infinitysearch.co/static/js/stopwatch_timer.js" defer></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/theme_bottom.js')}}" defer></script>
+<style id="custom_css_placeholder_results">
+
+</style>
+</body>
+</html>
