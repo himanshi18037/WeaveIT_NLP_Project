@@ -9,7 +9,9 @@ WeaveIT - We explore the different methods of performing autocompletion in two l
 ## Data Exploration 
 We construct our own dataset. The dataset consists of two components: English and Hindi text. The English data was taken from 1661-0.txt which is an eBook of 'The Adventures of Sherlock Holmes' penned by 'Arthur Conan Doyle'. The Hindi data was taken from 'premchand.tsv' which consists of 157 short stories and 10 novels by the Indian writer Munshi Premchand. 
 ## Baseline Models
-The Baselines Codes for autocompletion models are in this directory.
+The Baselines Codes for autocompletion models are in this directory. 
+## Model Checkpoints 
+The models and tokenizers can be found at https://drive.google.com/drive/folders/1UNG2nU57ZK34cnqyLN-vWNEGSM9xaMmf?usp=sharing
 
 ## Using the system
 ### Deployment 
